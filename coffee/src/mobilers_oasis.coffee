@@ -6,5 +6,6 @@ class MobilersOasis
   constructor: (@location) ->
   getOasis: (successCallback, failureCallback) ->
     console.log "[MobilersOasis#GetOasis] ENTER"
+    console.log @ENDPOINT
 
 this.exports = MobilersOasis

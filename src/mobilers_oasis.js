@@ -13,7 +13,8 @@
     }
 
     MobilersOasis.prototype.getOasis = function(successCallback, failureCallback) {
-      return console.log("[MobilersOasis#GetOasis] ENTER");
+      console.log("[MobilersOasis#GetOasis] ENTER");
+      return console.log(this.ENDPOINT);
     };
 
     return MobilersOasis;
