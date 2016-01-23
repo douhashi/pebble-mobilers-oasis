@@ -1,11 +1,13 @@
 (function() {
-  var UI, Vector2, Vibe, main;
+  var MobilersOasis, UI, Vector2, Vibe, main;
 
   UI = require('ui');
 
   Vector2 = require('vector2');
 
   Vibe = require('ui/vibe');
+
+  MobilersOasis = require('mobilers_oasis');
 
   main = new UI.Card({
     title: 'Pebble.js',
@@ -19,8 +21,9 @@
   main.show();
 
   main.on('click', 'up', function(e) {
-    var menu;
-    Vibe.vibrate('long');
+    var menu, mo;
+    mo = MobilersOasis["new"];
+    mo.getOasis({});
     menu = new UI.Menu({
       sections: [
         {

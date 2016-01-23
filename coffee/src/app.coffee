@@ -2,6 +2,9 @@ UI = require('ui')
 Vector2 = require('vector2')
 Vibe = require('ui/vibe')
 
+# my module
+MobilersOasis = require('mobilers_oasis')
+
 main = new (UI.Card)(
   title: 'Pebble.js'
   icon: 'images/menu_icon.png'
@@ -13,7 +16,8 @@ main = new (UI.Card)(
 main.show()
 
 main.on 'click', 'up', (e) ->
-  Vibe.vibrate 'long'
+  mo = MobilersOasis.new
+  mo.getOasis({})
   menu = new (UI.Menu)(sections: [ { items: [
     {
       title: 'Pebble.js'
