@@ -16,7 +16,7 @@ main = new (UI.Card)(
 main.show()
 
 main.on 'click', 'up', (e) ->
-  mo = MobilersOasis.new
+  mo = new MobilersOasis()
   mo.getOasis({})
   menu = new (UI.Menu)(sections: [ { items: [
     {

@@ -22,7 +22,7 @@
 
   main.on('click', 'up', function(e) {
     var menu, mo;
-    mo = MobilersOasis["new"];
+    mo = new MobilersOasis();
     mo.getOasis({});
     menu = new UI.Menu({
       sections: [
