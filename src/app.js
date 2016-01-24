@@ -1,5 +1,5 @@
 (function() {
-  var Geolocation, MobilersOasis, UI, Vector2, Vibe, logoText, splashWindow;
+  var Geolocation, MobilersOasis, UI, Vector2, Vibe, logoText, openOasesMenu, splashWindow;
 
   UI = require('ui');
 
@@ -42,26 +42,24 @@
     return console.log('failure');
   });
 
-  ({
-    openOasesMenu: function(oases) {
-      var i, item, items, len, menu, oasis;
-      items = [];
-      for (i = 0, len = oases.length; i < len; i++) {
-        oasis = oases[i];
-        item = {
-          title: oasis.title
-        };
-        items.push(item);
-      }
-      menu = new UI.Menu({
-        sections: [
-          {
-            items: items
-          }
-        ]
-      });
-      return menu.show();
+  openOasesMenu = function(oases) {
+    var i, item, items, len, menu, oasis;
+    items = [];
+    for (i = 0, len = oases.length; i < len; i++) {
+      oasis = oases[i];
+      item = {
+        title: oasis.title
+      };
+      items.push(item);
     }
-  });
+    menu = new UI.Menu({
+      sections: [
+        {
+          items: items
+        }
+      ]
+    });
+    return menu.show();
+  };
 
 }).call(this);
