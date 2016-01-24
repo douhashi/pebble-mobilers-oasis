@@ -4,7 +4,7 @@ class Oasis
     @distance = @entry.distance
     @latitude = @entry.latitude
     @longitude = @entry.longitude
-  distanceToMeter: ->
+  distanceToMetre: ->
     Math.ceil(this.distance * 1000)
 
 this.exports = Oasis
