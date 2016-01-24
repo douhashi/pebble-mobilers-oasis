@@ -14,7 +14,7 @@ class MobilersOasis
     @successCallback = successCallback
     @failureCallback = failureCallback
 
-    ajax { url: MobilersOasis.ENDPOINT + _generateUrlParams(location).call(this), type: 'json' },
+    ajax { url: MobilersOasis.ENDPOINT + generateUrlParams, type: 'json' },
       (data, status, request) =>
         console.log '[MobilersOasis#getOases] Success'
         oases = []
@@ -27,15 +27,15 @@ class MobilersOasis
         console.log '[MobilersOasis#getOases] Failure'
         @failureCallback data
 
-  _generateUrlParams = (location)->
+  generateUrlParams: (location) ->
     circle = _around1km.call(this)
     params = []
     params.push 'n=' + circle.n
     params.push 's=' + circle.s
     params.push 'e=' + circle.e
     params.push 'w=' + circle.w
-    #params.push 'lat=' + @latitude
-    #params.push 'lng=' + @longitude
+    params.push 'lat=' + @latitude
+    params.push 'lng=' + @longitude
     '?' + params.join '&'
 
   _around1km = ->
