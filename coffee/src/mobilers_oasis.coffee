@@ -7,7 +7,7 @@ class MobilersOasis
   @LONGITUDE_1KM = 0.010966404715491394
 
   constructor: ->
-  getOasses: (location, successCallback, failureCallback) ->
+  getOases: (location, successCallback, failureCallback) ->
     console.log '[MobilersOasis#getOases] ENTER'
 
     @location = location

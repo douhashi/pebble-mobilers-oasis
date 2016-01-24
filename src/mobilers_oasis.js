@@ -16,7 +16,7 @@
 
     function MobilersOasis() {}
 
-    MobilersOasis.prototype.getOasses = function(location, successCallback, failureCallback) {
+    MobilersOasis.prototype.getOases = function(location, successCallback, failureCallback) {
       console.log('[MobilersOasis#getOases] ENTER');
       this.location = location;
       this.successCallback = successCallback;
