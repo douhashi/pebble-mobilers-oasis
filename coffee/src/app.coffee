@@ -4,6 +4,7 @@ Vibe = require('ui/vibe')
 
 # my module
 MobilersOasis = require('mobilers_oasis')
+Geolocation   = require('geolocation')
 
 main = new (UI.Card)(
   title: 'Pebble.js'
@@ -16,13 +17,17 @@ main = new (UI.Card)(
 main.show()
 
 main.on 'click', 'up', (e) ->
-  mo = new MobilersOasis()
-  location = {latitude: 34.705067, longitude: 135.498468}
-  mo.getOasis location,
-    (oases) ->
-      console.log oases[0].title
+  Geolocation.getCurrentPosition(
+    (location) ->
+      mo = new MobilersOasis()
+      #location = {latitude: 34.705067, longitude: 135.498468}
+      mo.getOases location,
+        (oases) ->
+          console.log oases[0].title
     (data) ->
       console.log 'failure'
+  )
+
   menu = new (UI.Menu)(sections: [ { items: [
     {
       title: 'Pebble.js'

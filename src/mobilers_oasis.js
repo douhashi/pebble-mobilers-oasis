@@ -16,8 +16,8 @@
 
     function MobilersOasis() {}
 
-    MobilersOasis.prototype.getOasis = function(location, successCallback, failureCallback) {
-      console.log('[MobilersOasis#getOasis] ENTER');
+    MobilersOasis.prototype.getOasses = function(location, successCallback, failureCallback) {
+      console.log('[MobilersOasis#getOases] ENTER');
       this.location = location;
       this.successCallback = successCallback;
       this.failureCallback = failureCallback;
@@ -27,7 +27,7 @@
       }, (function(_this) {
         return function(data, status, request) {
           var entry, i, len, oases, oasis, ref;
-          console.log('[MobilerOasis#getOasis] Success');
+          console.log('[MobilerOasis#getOases] Success');
           oases = [];
           ref = data.results;
           for (i = 0, len = ref.length; i < len; i++) {
@@ -39,7 +39,7 @@
         };
       })(this), (function(_this) {
         return function(data, status, request) {
-          console.log('[MobilerOasis#getOasis] Failure');
+          console.log('[MobilerOasis#getOases] Failure');
           return _this.failureCallback(data);
         };
       })(this));

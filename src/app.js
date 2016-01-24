@@ -1,5 +1,5 @@
 (function() {
-  var MobilersOasis, UI, Vector2, Vibe, main;
+  var Geolocation, MobilersOasis, UI, Vector2, Vibe, main;
 
   UI = require('ui');
 
@@ -8,6 +8,8 @@
   Vibe = require('ui/vibe');
 
   MobilersOasis = require('mobilers_oasis');
+
+  Geolocation = require('geolocation');
 
   main = new UI.Card({
     title: 'Pebble.js',
@@ -21,14 +23,13 @@
   main.show();
 
   main.on('click', 'up', function(e) {
-    var location, menu, mo;
-    mo = new MobilersOasis();
-    location = {
-      latitude: 34.705067,
-      longitude: 135.498468
-    };
-    mo.getOasis(location, function(oases) {
-      return console.log(oases[0].title);
+    var menu;
+    Geolocation.getCurrentPosition(function(location) {
+      var mo;
+      mo = new MobilersOasis();
+      return mo.getOases(location, function(oases) {
+        return console.log(oases[0].title);
+      });
     }, function(data) {
       return console.log('failure');
     });

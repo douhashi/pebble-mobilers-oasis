@@ -7,8 +7,8 @@ class MobilersOasis
   @LONGITUDE_1KM = 0.010966404715491394
 
   constructor: ->
-  getOasis: (location, successCallback, failureCallback) ->
-    console.log '[MobilersOasis#getOasis] ENTER'
+  getOasses: (location, successCallback, failureCallback) ->
+    console.log '[MobilersOasis#getOases] ENTER'
 
     @location = location
     @successCallback = successCallback
@@ -16,7 +16,7 @@ class MobilersOasis
 
     ajax { url: MobilersOasis.ENDPOINT + _generateUrlParams.call(this), type: 'json' },
       (data, status, request) =>
-        console.log '[MobilerOasis#getOasis] Success'
+        console.log '[MobilerOasis#getOases] Success'
         oases = []
         for entry in data.results
           oasis = new Oasis entry
@@ -24,7 +24,7 @@ class MobilersOasis
         @successCallback oases
 
       (data, status, request) =>
-        console.log '[MobilerOasis#getOasis] Failure'
+        console.log '[MobilerOasis#getOases] Failure'
         @failureCallback data
 
   _generateUrlParams = ->
