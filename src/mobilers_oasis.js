@@ -22,7 +22,7 @@
       this.successCallback = successCallback;
       this.failureCallback = failureCallback;
       return ajax({
-        url: MobilersOasis.ENDPOINT + generateUrlParams(),
+        url: MobilersOasis.ENDPOINT + generateUrlParams.call(this),
         type: 'json'
       }, (function(_this) {
         return function(data, status, request) {
