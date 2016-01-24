@@ -34,8 +34,8 @@ class MobilersOasis
     params.push 's=' + circle.s
     params.push 'e=' + circle.e
     params.push 'w=' + circle.w
-    params.push 'lat=' + this.latitude
-    params.push 'lng=' + this.longitude
+    params.push 'lat=' + this.location.latitude
+    params.push 'lng=' + this.location.longitude
     console.log '?' + params.join '&'
     '?' + params.join '&'
 
