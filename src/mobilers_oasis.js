@@ -6,6 +6,8 @@
   Oasis = require('oasis');
 
   MobilersOasis = (function() {
+    var _around1km, _generateUrlParams;
+
     MobilersOasis.ENDPOINT = 'http://oasis.mogya.com/api/v0/search';
 
     MobilersOasis.LATITUDE_1KM = 0.0090133729745762;
@@ -20,7 +22,7 @@
       this.successCallback = successCallback;
       this.failureCallback = failureCallback;
       return ajax({
-        url: MobilersOasis.ENDPOINT + _generateUrlParams(),
+        url: MobilersOasis.ENDPOINT + _generateUrlParams.call(this),
         type: 'json'
       }, function(data, status, request) {
         var entry, i, len, oases, oasis, ref;
@@ -39,9 +41,9 @@
       });
     };
 
-    MobilersOasis.prototype.generateUrlParams = function() {
+    _generateUrlParams = function() {
       var circle, params;
-      circle = _around1km();
+      circle = _around1km.call(this);
       params = [];
       params.push('n=' + circle.n);
       params.push('s=' + circle.s);
@@ -50,7 +52,7 @@
       return '?' + params.join('&');
     };
 
-    MobilersOasis.prototype.around1km = function() {
+    _around1km = function() {
       var circle;
       circle = {};
       circle.n = this.location.latitude + MobilersOasis.LATITUDE_1KM;
