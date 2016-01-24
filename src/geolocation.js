@@ -14,7 +14,7 @@
           return successCallback(location);
         };
       })(this), (function(_this) {
-        return function(error) {
+        return function(err) {
           console.log('[Geolocation.getCurrentPosition] Error: (' + err.code + '): ' + err.message);
           return failureCallback(error);
         };

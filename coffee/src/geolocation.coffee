@@ -4,7 +4,7 @@ class Geolocation
       (location) =>
         location = { latitude: location.coords.latitude, longitude: location.coords.longitude }
         successCallback location
-      (error) =>
+      (err) =>
         console.log '[Geolocation.getCurrentPosition] Error: (' + err.code + '): ' + err.message
         failureCallback(error)
     )
