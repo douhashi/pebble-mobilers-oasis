@@ -20,7 +20,7 @@ main.on 'click', 'up', (e) ->
   Geolocation.getCurrentPosition(
     (location) ->
       mo = new MobilersOasis()
-      #location = {latitude: 34.705067, longitude: 135.498468}
+      location = {latitude: 34.705067, longitude: 135.498468}
       mo.getOases location,
         (oases) ->
           console.log oases[0].title

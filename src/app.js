@@ -27,6 +27,10 @@
     Geolocation.getCurrentPosition(function(location) {
       var mo;
       mo = new MobilersOasis();
+      location = {
+        latitude: 34.705067,
+        longitude: 135.498468
+      };
       return mo.getOases(location, function(oases) {
         return console.log(oases[0].title);
       }, function(data) {
