@@ -1,20 +1,63 @@
 (function() {
-  var MobilersOasis;
+  var MobilersOasis, Oasis, ajax;
 
-  require('ajax');
+  ajax = require('ajax');
 
-  require('oasis');
+  Oasis = require('oasis');
 
   MobilersOasis = (function() {
     MobilersOasis.ENDPOINT = 'http://oasis.mogya.com/api/v0/search';
 
-    function MobilersOasis(location) {
-      this.location = location;
-    }
+    MobilersOasis.LATITUDE_1KM = 0.0090133729745762;
 
-    MobilersOasis.prototype.getOasis = function(successCallback, failureCallback) {
-      console.log("[MobilersOasis#GetOasis] ENTER");
-      return console.log(MobilersOasis.ENDPOINT);
+    MobilersOasis.LONGITUDE_1KM = 0.010966404715491394;
+
+    function MobilersOasis() {}
+
+    MobilersOasis.prototype.getOasis = function(location, successCallback, failureCallback) {
+      console.log('[MobilersOasis#getOasis] ENTER');
+      this.location = location;
+      this.successCallback = successCallback;
+      this.failureCallback = failureCallback;
+      return ajax({
+        url: endpoint + _generateUrlParams(),
+        type: 'json'
+      }, function(data, status, request) {
+        var entry, i, len, oases, oasis, ref;
+        concole.log('[MobilerOasis#getOasis] Success');
+        oases = [];
+        ref = data.results;
+        for (i = 0, len = ref.length; i < len; i++) {
+          entry = ref[i];
+          oasis = new Oasis(entry);
+          oases.push(oasis);
+        }
+        return this.successCallback(oases);
+      }, function(data, status, request) {
+        concole.log('[MobilerOasis#getOasis] Failure');
+        return this.failureCallback(data);
+      });
+    };
+
+    MobilersOasis.prototype._generateUrlParams = function() {
+      var circle, params;
+      circle = _around1km();
+      params = [];
+      params.push('n=' + circle.n);
+      params.push('s=' + circle.s);
+      params.push('e=' + circle.e);
+      params.push('w=' + circle.w);
+      return '?' + params.join('&');
+    };
+
+    MobilersOasis.prototype._around1km = function() {
+      var circle;
+      circle = {};
+      circle.n = this.location.latitude + MobilersOasis.LATITUDE_1KM;
+      circle.s = this.location.latitude - MobilersOasis.LATITUDE_1KM;
+      circle.e = this.location.longitude + MobilersOasis.LONGITUDE_1KM;
+      circle.w = this.location.longitude - MobilersOasis.LONGITUDE_1KM;
+      return circle;
     };
 
     return MobilersOasis;

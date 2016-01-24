@@ -21,9 +21,17 @@
   main.show();
 
   main.on('click', 'up', function(e) {
-    var menu, mo;
+    var location, menu, mo;
     mo = new MobilersOasis();
-    mo.getOasis({});
+    location = {
+      latitude: 34.705067,
+      longitude: 135.498468
+    };
+    mo.getOasis(location, function(oases) {
+      return console.log(oases[0].title);
+    }, function(data) {
+      return console.log('failure');
+    });
     menu = new UI.Menu({
       sections: [
         {
