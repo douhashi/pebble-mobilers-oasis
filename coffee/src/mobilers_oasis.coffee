@@ -34,6 +34,8 @@ class MobilersOasis
     params.push 's=' + circle.s
     params.push 'e=' + circle.e
     params.push 'w=' + circle.w
+    params.push 'lat=' + @latitude
+    params.push 'lng=' + @longitude
     '?' + params.join '&'
 
   _around1km = ->
@@ -42,6 +44,5 @@ class MobilersOasis
     circle.s = @location.latitude  - MobilersOasis.LATITUDE_1KM
     circle.e = @location.longitude + MobilersOasis.LONGITUDE_1KM
     circle.w = @location.longitude - MobilersOasis.LONGITUDE_1KM
-    circle
 
 this.exports = MobilersOasis

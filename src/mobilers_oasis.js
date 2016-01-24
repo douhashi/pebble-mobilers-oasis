@@ -53,6 +53,8 @@
       params.push('s=' + circle.s);
       params.push('e=' + circle.e);
       params.push('w=' + circle.w);
+      params.push('lat=' + this.latitude);
+      params.push('lng=' + this.longitude);
       return '?' + params.join('&');
     };
 
@@ -62,8 +64,7 @@
       circle.n = this.location.latitude + MobilersOasis.LATITUDE_1KM;
       circle.s = this.location.latitude - MobilersOasis.LATITUDE_1KM;
       circle.e = this.location.longitude + MobilersOasis.LONGITUDE_1KM;
-      circle.w = this.location.longitude - MobilersOasis.LONGITUDE_1KM;
-      return circle;
+      return circle.w = this.location.longitude - MobilersOasis.LONGITUDE_1KM;
     };
 
     return MobilersOasis;

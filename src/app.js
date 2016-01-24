@@ -44,7 +44,8 @@
     for (i = 0, len = oases.length; i < len; i++) {
       oasis = oases[i];
       item = {
-        title: oasis.title
+        title: oasis.title,
+        subtitle: oasis.distance + 'km'
       };
       items.push(item);
     }
