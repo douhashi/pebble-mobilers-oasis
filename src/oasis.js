@@ -10,6 +10,10 @@
       this.longitude = this.entry.longitude;
     }
 
+    Oasis.prototype.distanceToMeter = function() {
+      return Math.ceil(this.distance * 1000);
+    };
+
     return Oasis;
 
   })();

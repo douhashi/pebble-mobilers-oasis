@@ -33,7 +33,7 @@ Geolocation.getCurrentPosition(
 openOasesMenu = (oases) ->
   items = []
   for oasis in oases
-    item = { title: oasis.title, subtitle: oasis.distance + 'km' }
+    item = { title: oasis.title, subtitle: oasis.distanceToMeter + ' m' }
     items.push item
   menu = new UI.Menu sections: [{ items: items }]
   menu.show()

@@ -45,7 +45,7 @@
       oasis = oases[i];
       item = {
         title: oasis.title,
-        subtitle: oasis.distance + 'km'
+        subtitle: oasis.distanceToMeter + ' m'
       };
       items.push(item);
     }
