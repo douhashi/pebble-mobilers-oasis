@@ -53,8 +53,6 @@
       params.push('s=' + circle.s);
       params.push('e=' + circle.e);
       params.push('w=' + circle.w);
-      params.push('lat=' + this.latitude);
-      params.push('lng=' + this.longitude);
       return '?' + params.join('&');
     };
 

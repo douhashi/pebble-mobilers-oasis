@@ -34,8 +34,8 @@ class MobilersOasis
     params.push 's=' + circle.s
     params.push 'e=' + circle.e
     params.push 'w=' + circle.w
-    params.push 'lat=' + @latitude
-    params.push 'lng=' + @longitude
+    #params.push 'lat=' + @latitude
+    #params.push 'lng=' + @longitude
     '?' + params.join '&'
 
   _around1km = ->
