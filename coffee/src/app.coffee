@@ -31,7 +31,7 @@ Geolocation.getCurrentPosition(
     console.log 'failure'
 )
 
-openOasisMenu: (oases) ->
+openOasesMenu: (oases) ->
   items = []
   for oasis in oases
     item = { title: oasis.title }

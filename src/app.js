@@ -43,7 +43,7 @@
   });
 
   ({
-    openOasisMenu: function(oases) {
+    openOasesMenu: function(oases) {
       var i, item, items, len, menu, oasis;
       items = [];
       for (i = 0, len = oases.length; i < len; i++) {
