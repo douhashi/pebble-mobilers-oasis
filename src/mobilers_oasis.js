@@ -45,7 +45,7 @@
       })(this));
     };
 
-    MobilersOasis.prototype.generateUrlParams = function(location) {
+    MobilersOasis.prototype.generateUrlParams = function() {
       var circle, params;
       circle = _around1km.call(this);
       params = [];
@@ -55,6 +55,7 @@
       params.push('w=' + circle.w);
       params.push('lat=' + this.latitude);
       params.push('lng=' + this.longitude);
+      console.log('?' + params.join('&'));
       return '?' + params.join('&');
     };
 

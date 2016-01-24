@@ -27,15 +27,16 @@ class MobilersOasis
         console.log '[MobilersOasis#getOases] Failure'
         @failureCallback data
 
-  generateUrlParams: (location) ->
+  generateUrlParams: ->
     circle = _around1km.call(this)
     params = []
     params.push 'n=' + circle.n
     params.push 's=' + circle.s
     params.push 'e=' + circle.e
     params.push 'w=' + circle.w
-    params.push 'lat=' + @latitude
-    params.push 'lng=' + @longitude
+    params.push 'lat=' + this.latitude
+    params.push 'lng=' + this.longitude
+    console.log '?' + params.join '&'
     '?' + params.join '&'
 
   _around1km = ->
