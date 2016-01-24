@@ -24,19 +24,17 @@
 
   main.on('click', 'up', function(e) {
     var menu;
-    Geolocation.getCurrentPosition((function(_this) {
-      return function(location) {
-        var mo;
-        mo = new MobilersOasis();
-        return mo.getOases(location, function(oases) {
-          return console.log(oases[0].title);
-        });
-      };
-    })(this), (function(_this) {
-      return function(data) {
+    Geolocation.getCurrentPosition(function(location) {
+      var mo;
+      mo = new MobilersOasis();
+      return mo.getOases(location, function(oases) {
+        return console.log(oases[0].title);
+      }, function(data) {
         return console.log('failure');
-      };
-    })(this));
+      });
+    }, function(error) {
+      return console.log('failure');
+    });
     menu = new UI.Menu({
       sections: [
         {
