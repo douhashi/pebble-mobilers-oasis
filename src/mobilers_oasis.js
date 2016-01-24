@@ -22,7 +22,7 @@
       this.successCallback = successCallback;
       this.failureCallback = failureCallback;
       return ajax({
-        url: MobilersOasis.ENDPOINT + _generateUrlParams.call(this),
+        url: MobilersOasis.ENDPOINT + _generateUrlParams(location).call(this),
         type: 'json'
       }, (function(_this) {
         return function(data, status, request) {
@@ -45,7 +45,7 @@
       })(this));
     };
 
-    _generateUrlParams = function() {
+    _generateUrlParams = function(location) {
       var circle, params;
       circle = _around1km.call(this);
       params = [];
@@ -62,7 +62,8 @@
       circle.n = this.location.latitude + MobilersOasis.LATITUDE_1KM;
       circle.s = this.location.latitude - MobilersOasis.LATITUDE_1KM;
       circle.e = this.location.longitude + MobilersOasis.LONGITUDE_1KM;
-      return circle.w = this.location.longitude - MobilersOasis.LONGITUDE_1KM;
+      circle.w = this.location.longitude - MobilersOasis.LONGITUDE_1KM;
+      return circle;
     };
 
     return MobilersOasis;
