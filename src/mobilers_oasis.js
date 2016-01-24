@@ -6,8 +6,6 @@
   Oasis = require('oasis');
 
   MobilersOasis = (function() {
-    var _around1km, _generateUrlParams;
-
     MobilersOasis.ENDPOINT = 'http://oasis.mogya.com/api/v0/search';
 
     MobilersOasis.LATITUDE_1KM = 0.0090133729745762;
@@ -41,7 +39,7 @@
       });
     };
 
-    _generateUrlParams = function() {
+    MobilersOasis.prototype.generateUrlParams = function() {
       var circle, params;
       circle = _around1km();
       params = [];
@@ -52,7 +50,7 @@
       return '?' + params.join('&');
     };
 
-    _around1km = function() {
+    MobilersOasis.prototype.around1km = function() {
       var circle;
       circle = {};
       circle.n = this.location.latitude + MobilersOasis.LATITUDE_1KM;

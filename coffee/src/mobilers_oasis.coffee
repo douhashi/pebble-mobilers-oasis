@@ -27,7 +27,7 @@ class MobilersOasis
         console.log '[MobilerOasis#getOasis] Failure'
         @failureCallback data
 
-  _generateUrlParams = ->
+  generateUrlParams: ->
     circle = _around1km()
     params = []
     params.push 'n=' + circle.n
@@ -36,7 +36,7 @@ class MobilersOasis
     params.push 'w=' + circle.w
     '?' + params.join '&'
 
-  _around1km = ->
+  around1km: ->
     circle = {}
     circle.n = @location.latitude  + MobilersOasis.LATITUDE_1KM
     circle.s = @location.latitude  - MobilersOasis.LATITUDE_1KM
