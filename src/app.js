@@ -1,5 +1,5 @@
 (function() {
-  var Geolocation, MobilersOasis, UI, Vector2, Vibe, logoText, openOasesMenu, splashWindow;
+  var Geolocation, MobilersOasis, UI, Vector2, Vibe, logoText, openOasesMenu, splashWindow, statusText;
 
   UI = require('ui');
 
@@ -14,14 +14,24 @@
   splashWindow = new UI.Window();
 
   logoText = new UI.Text({
-    position: new Vector2(0, 65),
+    position: new Vector2(0, 35),
     size: new Vector2(144, 30),
     font: 'gothic-24-bold',
     text: "mobiler's oasis",
     textAlign: 'center'
   });
 
+  statusText = new UI.Text({
+    position: new Vector2(0, 65),
+    size: new Vector2(144, 24),
+    font: 'gothic-24-bold',
+    text: "Get position ...",
+    textAlign: 'center'
+  });
+
   splashWindow.add(logoText);
+
+  splashWindow.add(statusText);
 
   splashWindow.show();
 
@@ -29,6 +39,7 @@
     var mo;
     mo = new MobilersOasis();
     console.log(location.latitude, location.longitude);
+    statusText.text("Searching ...");
     return mo.getOases(location, function(oases) {
       return openOasesMenu(oases);
     }, function(data) {
