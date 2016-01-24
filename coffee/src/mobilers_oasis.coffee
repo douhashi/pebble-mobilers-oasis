@@ -15,7 +15,7 @@ class MobilersOasis
     @failureCallback = failureCallback
 
     ajax { url: MobilersOasis.ENDPOINT + _generateUrlParams.call(this), type: 'json' },
-      (data, status, request) ->
+      (data, status, request) =>
         console.log '[MobilerOasis#getOasis] Success'
         oases = []
         for entry in data.results
@@ -23,7 +23,7 @@ class MobilersOasis
           oases.push oasis
         @successCallback oases
 
-      (data, status, request) ->
+      (data, status, request) =>
         console.log '[MobilerOasis#getOasis] Failure'
         @failureCallback data
 

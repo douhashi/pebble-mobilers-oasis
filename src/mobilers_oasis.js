@@ -24,21 +24,25 @@
       return ajax({
         url: MobilersOasis.ENDPOINT + _generateUrlParams.call(this),
         type: 'json'
-      }, function(data, status, request) {
-        var entry, i, len, oases, oasis, ref;
-        console.log('[MobilerOasis#getOasis] Success');
-        oases = [];
-        ref = data.results;
-        for (i = 0, len = ref.length; i < len; i++) {
-          entry = ref[i];
-          oasis = new Oasis(entry);
-          oases.push(oasis);
-        }
-        return this.successCallback(oases);
-      }, function(data, status, request) {
-        console.log('[MobilerOasis#getOasis] Failure');
-        return this.failureCallback(data);
-      });
+      }, (function(_this) {
+        return function(data, status, request) {
+          var entry, i, len, oases, oasis, ref;
+          console.log('[MobilerOasis#getOasis] Success');
+          oases = [];
+          ref = data.results;
+          for (i = 0, len = ref.length; i < len; i++) {
+            entry = ref[i];
+            oasis = new Oasis(entry);
+            oases.push(oasis);
+          }
+          return _this.successCallback(oases);
+        };
+      })(this), (function(_this) {
+        return function(data, status, request) {
+          console.log('[MobilerOasis#getOasis] Failure');
+          return _this.failureCallback(data);
+        };
+      })(this));
     };
 
     _generateUrlParams = function() {
