@@ -21,7 +21,6 @@ Geolocation.getCurrentPosition(
   (location) ->
     mo = new MobilersOasis()
     console.log location.latitude, location.longitude
-    location = {latitude: 34.705067, longitude: 135.498468}
     mo.getOases location,
       (oases) ->
         openOasesMenu(oases)
