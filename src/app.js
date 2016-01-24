@@ -1,5 +1,5 @@
 (function() {
-  var Geolocation, MobilersOasis, UI, Vector2, Vibe, main;
+  var Geolocation, MobilersOasis, UI, Vector2, Vibe, logoText, splashWindow;
 
   UI = require('ui');
 
@@ -11,81 +11,57 @@
 
   Geolocation = require('geolocation');
 
-  main = new UI.Card({
-    title: 'Pebble.js',
-    icon: 'images/menu_icon.png',
-    subtitle: 'Hello World!',
-    body: 'Press any button.',
-    subtitleColor: 'indigo',
-    bodyColor: '#9a0036'
+  splashWindow = new UI.Window();
+
+  logoText = new UI.Text({
+    position: new Vector2(0, 65),
+    size: new Vector2(144, 30),
+    font: 'gothic-24-bold',
+    text: "mobiler's oasis",
+    textAlign: 'center'
   });
 
-  main.show();
+  splashWindow.add(logoText);
 
-  main.on('click', 'up', function(e) {
-    var menu;
-    Geolocation.getCurrentPosition(function(location) {
-      var mo;
-      mo = new MobilersOasis();
-      console.log(location.latitude, location.longitude);
-      location = {
-        latitude: 34.705067,
-        longitude: 135.498468
-      };
-      return mo.getOases(location, function(oases) {
-        return console.log(oases[0].title);
-      }, function(data) {
-        return console.log('failure');
-      });
-    }, function(error) {
+  splashWindow.show();
+
+  Geolocation.getCurrentPosition(function(location) {
+    var mo;
+    mo = new MobilersOasis();
+    console.log(location.latitude, location.longitude);
+    location = {
+      latitude: 34.705067,
+      longitude: 135.498468
+    };
+    return mo.getOases(location, function(oases) {
+      return openOasesMenu(oases);
+    }, function(data) {
       return console.log('failure');
     });
-    menu = new UI.Menu({
-      sections: [
-        {
-          items: [
-            {
-              title: 'Pebble.js',
-              icon: 'images/menu_icon.png',
-              subtitle: 'Can do Menus'
-            }, {
-              title: 'Second Item',
-              subtitle: 'Subtitle Text'
-            }
-          ]
-        }
-      ]
-    });
-    menu.on('select', function(e) {
-      console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-      console.log('The item is titled "' + e.item.title + '"');
-    });
-    menu.show();
+  }, function(error) {
+    return console.log('failure');
   });
 
-  main.on('click', 'select', function(e) {
-    var textfield, wind;
-    wind = new UI.Window({
-      fullscreen: true
-    });
-    textfield = new UI.Text({
-      position: new Vector2(0, 65),
-      size: new Vector2(144, 30),
-      font: 'gothic-24-bold',
-      text: 'Text Anywhere!',
-      textAlign: 'center'
-    });
-    wind.add(textfield);
-    wind.show();
-  });
-
-  main.on('click', 'down', function(e) {
-    var card;
-    card = new UI.Card;
-    card.title('A Card');
-    card.subtitle('Is a Window');
-    card.body('The simplest window type in Pebble.js.');
-    card.show();
+  ({
+    openOasisMenu: function(oases) {
+      var i, item, items, len, menu, oasis;
+      items = [];
+      for (i = 0, len = oases.length; i < len; i++) {
+        oasis = oases[i];
+        item = {
+          title: oasis.title
+        };
+        items.push(item);
+      }
+      menu = new UI.Menu({
+        sections: [
+          {
+            items: items
+          }
+        ]
+      });
+      return menu.show();
+    }
   });
 
 }).call(this);

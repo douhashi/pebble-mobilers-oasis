@@ -16,7 +16,7 @@ class MobilersOasis
 
     ajax { url: MobilersOasis.ENDPOINT + _generateUrlParams.call(this), type: 'json' },
       (data, status, request) =>
-        console.log '[MobilerOasis#getOases] Success'
+        console.log '[MobilersOasis#getOases] Success'
         oases = []
         for entry in data.results
           oasis = new Oasis entry
@@ -24,7 +24,7 @@ class MobilersOasis
         @successCallback oases
 
       (data, status, request) =>
-        console.log '[MobilerOasis#getOases] Failure'
+        console.log '[MobilersOasis#getOases] Failure'
         @failureCallback data
 
   _generateUrlParams = ->

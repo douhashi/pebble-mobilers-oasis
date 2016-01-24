@@ -6,7 +6,7 @@ class Geolocation
         successCallback location
       (err) =>
         console.log '[Geolocation.getCurrentPosition] Error: (' + err.code + '): ' + err.message
-        failureCallback(error)
+        failureCallback(err)
     )
 
 this.exports = Geolocation

@@ -27,7 +27,7 @@
       }, (function(_this) {
         return function(data, status, request) {
           var entry, i, len, oases, oasis, ref;
-          console.log('[MobilerOasis#getOases] Success');
+          console.log('[MobilersOasis#getOases] Success');
           oases = [];
           ref = data.results;
           for (i = 0, len = ref.length; i < len; i++) {
@@ -39,7 +39,7 @@
         };
       })(this), (function(_this) {
         return function(data, status, request) {
-          console.log('[MobilerOasis#getOases] Failure');
+          console.log('[MobilersOasis#getOases] Failure');
           return _this.failureCallback(data);
         };
       })(this));
