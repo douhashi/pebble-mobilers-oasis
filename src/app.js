@@ -51,6 +51,7 @@
 
   openOasesMenu = function(oases) {
     var i, item, items, len, menu, oasis;
+    splashWindow.hide();
     items = [];
     for (i = 0, len = oases.length; i < len; i++) {
       oasis = oases[i];

@@ -41,6 +41,8 @@ Geolocation.getCurrentPosition(
 )
 
 openOasesMenu = (oases) ->
+  splashWindow.hide()
+
   items = []
   for oasis in oases
     item = { title: oasis.title, subtitle: oasis.distanceToMetre() + ' m' }
