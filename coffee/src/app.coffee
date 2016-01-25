@@ -48,4 +48,13 @@ openOasesMenu = (oases) ->
     item = { title: oasis.title, subtitle: oasis.distanceToMetre() + ' m' }
     items.push item
   menu = new UI.Menu sections: [{ items: items }]
+  # add handler
+  menu.on 'select', (e) ->
+    card = new UI()
+    card.title 'CARD'
+    card.subtitle e.item.title
+    card.body e.item.subtitle
+    card.show()
+
+
   menu.show()
