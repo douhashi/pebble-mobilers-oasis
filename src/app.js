@@ -70,7 +70,7 @@
     });
     menu.on('select', function(e) {
       var card;
-      card = new UI();
+      card = new UI.Card();
       card.title('CARD');
       card.subtitle(e.item.title);
       card.body(e.item.subtitle);

@@ -50,7 +50,7 @@ openOasesMenu = (oases) ->
   menu = new UI.Menu sections: [{ items: items }]
   # add handler
   menu.on 'select', (e) ->
-    card = new UI()
+    card = new UI.Card()
     card.title 'CARD'
     card.subtitle e.item.title
     card.body e.item.subtitle
